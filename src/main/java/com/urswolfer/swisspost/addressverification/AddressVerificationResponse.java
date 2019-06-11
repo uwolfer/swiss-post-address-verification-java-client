@@ -54,6 +54,16 @@ public class AddressVerificationResponse extends AdressCheckerResponseType {
         GERMAN, FRENCH, ITALIAN
     }
 
+    private String xmlContent;
+
+    public String getXmlContent() {
+        return xmlContent;
+    }
+
+    void setXmlContent(String xmlContent) {
+        this.xmlContent = xmlContent;
+    }
+
     public TypedResult getSingleResult() {
         return new TypedResult(getRows().get(0));
     }

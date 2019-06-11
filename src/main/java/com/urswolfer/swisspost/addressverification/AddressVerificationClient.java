@@ -33,6 +33,13 @@ import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
@@ -57,13 +64,29 @@ public class AddressVerificationClient {
             try {
                 SOAPMessage soapRequest = createSoapRequest(addressVerificationRequest);
                 SOAPMessage soapResponse = soapConnection.call(soapRequest, endpointUrl);
-                return parseSoapResponse(soapResponse);
+                AddressVerificationResponse addressVerificationResponse = parseSoapResponse(soapResponse);
+                addXmlContent(soapResponse, addressVerificationResponse);
+                return addressVerificationResponse;
+            } catch (TransformerException e) {
+                throw new RuntimeException(e);
             } finally {
                 soapConnection.close();
             }
         } catch (SOAPException | JAXBException e) {
             throw new AddressVerificationClientException(e);
         }
+    }
+
+    private void addXmlContent(SOAPMessage soapResponse, AddressVerificationResponse addressVerificationResponse) throws SOAPException, TransformerException {
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        StreamResult streamResult = new StreamResult(outputStream);
+        Source soapContent = soapResponse.getSOAPPart().getContent();
+        transformer.transform(soapContent, streamResult);
+        String xmlContent = new String(outputStream.toByteArray());
+        addressVerificationResponse.setXmlContent(xmlContent);
     }
 
     private void setupAuthenticator(final String userName, final String password) {
