@@ -87,6 +87,5 @@ This library uses [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the GNU GPL v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
-If you want to use this library in a commercial project which is not GPL v3.0 licenced,
-please contact [the author](mailto:uwolfer fwo.ch).
+This project is licensed under the GNU Lesser General Public License v3.0 -
+see the [LICENSE.md](LICENSE.md) file for details.
