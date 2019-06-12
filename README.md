@@ -87,5 +87,5 @@ This library uses [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the GNU Lesser General Public License v3.0 -
-see the [LICENSE.md](LICENSE.md) file for details.
+This project is released under the Apache 2.0 license -
+see the [LICENSE](LICENSE) file for details.
