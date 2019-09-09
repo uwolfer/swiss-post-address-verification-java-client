@@ -45,6 +45,18 @@ wsdl2java {
 }
 
 dependencies {
+    wsdl2java 'com.sun.xml.bind:jaxb-xjc:2.3.0.1'
+    wsdl2java 'javax.xml.bind:jaxb-api:2.3.1'
+    wsdl2java 'javax.xml.ws:jaxws-api:2.3.1'
+    wsdl2java 'org.apache.cxf:cxf-rt-wsdl:3.2.7'
+    wsdl2java 'javax.jws:javax.jws-api:1.1'
+
+    implementation 'com.sun.xml.bind:jaxb-xjc:2.3.0.1'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'javax.xml.ws:jaxws-api:2.3.1'
+    implementation 'org.apache.cxf:cxf-rt-wsdl:3.2.7'
+    implementation 'javax.jws:javax.jws-api:1.1'
+
     testCompile("org.junit.jupiter:junit-jupiter-api:5.0.3")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.3")
 }
