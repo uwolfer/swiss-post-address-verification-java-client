@@ -31,7 +31,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    compile 'com.github.uwolfer:swiss-post-address-verification-java-client:2.0'
+    compile 'com.github.uwolfer:swiss-post-address-verification-java-client:2.0.1'
 }
 ```
 
@@ -48,7 +48,7 @@ Or with Maven:
 <dependency>
     <groupId>com.github.uwolfer</groupId>
     <artifactId>swiss-post-address-verification-java-client</artifactId>
-    <version>2.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
