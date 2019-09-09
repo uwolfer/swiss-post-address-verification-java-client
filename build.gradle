@@ -57,6 +57,12 @@ dependencies {
     implementation 'org.apache.cxf:cxf-rt-wsdl:3.2.7'
     implementation 'javax.jws:javax.jws-api:1.1'
 
+    testRuntime 'com.sun.xml.bind:jaxb-xjc:2.3.0.1'
+    testRuntime 'javax.xml.bind:jaxb-api:2.3.1'
+    testRuntime 'javax.xml.ws:jaxws-api:2.3.1'
+    testRuntime 'org.apache.cxf:cxf-rt-wsdl:3.2.7'
+    testRuntime 'javax.jws:javax.jws-api:1.1'
+
     testCompile("org.junit.jupiter:junit-jupiter-api:5.0.3")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.3")
 }
