@@ -21,6 +21,8 @@ import static java.math.BigInteger.ONE;
 import ch.post.adresscheckerextern.v4_02_00.AdressCheckerResponseType;
 
 import java.math.BigInteger;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * This is just a wrapper around the generated class which allows to keep better
@@ -63,8 +65,12 @@ public class AddressVerificationResponse extends AdressCheckerResponseType {
         this.xmlContent = xmlContent;
     }
 
-    public TypedResult getSingleResult() {
-        return new TypedResult(getRows().get(0));
+    public Optional<TypedResult> getSingleResult() {
+        List<Rows> rows = getRows();
+        if (rows.size() != 1) {
+            return Optional.empty();
+        }
+        return Optional.of(new TypedResult(rows.get(0)));
     }
 
     public class TypedResult {
